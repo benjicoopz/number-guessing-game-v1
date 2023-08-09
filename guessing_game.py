@@ -11,14 +11,29 @@ def start_game():
 # Write your code inside this function.
     print("Welcome Challenger!")
     randnum = random.randrange(1, 10)
-    guess = int(input("Pick a number between One and Ten. "))
     guess_count = 1
-    while guess != randnum:
-        guess_count += 1
-        if guess < randnum:
-            print("Guess is too low! ")
-        elif guess > randnum:
-            print("Guess is too high! ")
+    
+    try:
+        guess = int(input("Pick a number between One and Ten. "))
+    except ValueError:
+        print("Try a number between One and Ten :) ")
+    else:
+    
+        while guess != randnum:
+            guess_count += 1
+            if guess > 10:
+                print("Number was higher than 10")
+            elif guess < 1:
+                print("Number was lower than 1")
+            if guess < randnum:
+                guess = int(input("Guess is too low! Try again:  "))
+            elif guess > randnum:
+                guess = int(input("Guess is too high! Try again:  "))
+        if guess == randnum:
+            print(f"Winner! It only took you {guess_count} tries! ")
+        
+       
+start_game()
         
         
     
