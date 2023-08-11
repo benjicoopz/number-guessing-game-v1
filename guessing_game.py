@@ -10,8 +10,10 @@ import random
 def start_game():
 # Write your code inside this function.
     print("Welcome Challenger!")
-    randnum = random.randrange(1, 10)
+    randnum = random.randrange(1, 11)
     guess_count = 1
+    high_score = 0
+    print(f"High Score: {high_score}")
     
     try:
         guess = int(input("Pick a number between One and Ten. "))
@@ -31,6 +33,11 @@ def start_game():
                 guess = int(input("Guess is too high! Try again:  "))
         if guess == randnum:
             print(f"Winner! It only took you {guess_count} tries! ")
+            play_again = input("Play again?  Y/N  ")
+            if guess_count > high_score:
+                guess_count = high_score
+            if play_again.lower() == "y":
+                start_game()
         
        
 start_game()
