@@ -3,7 +3,7 @@ Python Development Techdegree
 Project 1 - The Number Guessing Game
 --------------------------------
 """
-
+high_score = 0
 # Import the random module.
 import random
 # Create the start_game function.
@@ -12,8 +12,11 @@ def start_game():
     print("Welcome Challenger!")
     randnum = random.randrange(1, 11)
     guess_count = 1
-    high_score = 0
-    print(f"High Score: {high_score}")
+    global high_score
+    if high_score == 0:
+        print("Be the first to hold the High Score!")
+    elif high_score > 0:
+         print(f"High Score: {high_score}")
     
     try:
         guess = int(input("Pick a number between One and Ten. "))
@@ -31,11 +34,12 @@ def start_game():
                 guess = int(input("Guess is too low! Try again:  "))
             elif guess > randnum:
                 guess = int(input("Guess is too high! Try again:  "))
+        
         if guess == randnum:
             print(f"Winner! It only took you {guess_count} tries! ")
+            if high_score <= guess_count:
+                 high_score = guess_count
             play_again = input("Play again?  Y/N  ")
-            if guess_count > high_score:
-                guess_count = high_score
             if play_again.lower() == "y":
                 start_game()
         
