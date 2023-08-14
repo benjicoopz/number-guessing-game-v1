@@ -6,6 +6,7 @@ Project 1 - The Number Guessing Game
 high_score = 100
 # Import the random module.
 import random
+import sys
 # Create the start_game function.
 def start_game():
 # Write your code inside this function.
@@ -39,14 +40,15 @@ def start_game():
                     guess = int(input("Guess is too high! Try again:  "))
         
             if guess == randnum:
-                print(f"Winner! It only took you {guess_count} tries! ")
-                if guess_count <= high_score:
-                    high_score = guess_count
-                play_again = input("Play again?  Y/N  ")
-                if play_again.lower() == "y":
-                    start_game()
-                else:
-                    print("Thank you for playing! ")
+                    print(f"Winner! It only took you {guess_count} tries! ")
+                    if guess_count <= high_score:
+                        high_score = guess_count
+                    play_again = input("Play again?  Y/N  ")
+                    if play_again.lower() == "y":
+                        start_game()
+                    else:
+                        print("Thank you for playing! ")
+                        sys.exit()
         
        
 start_game()
