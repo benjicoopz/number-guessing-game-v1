@@ -19,31 +19,34 @@ def start_game():
          print(f"High Score: {high_score}")
     
          
-    
-    try:
-        guess = int(input("Pick a number between One and Ten. "))
-    except ValueError:
-        print("Try a number between One and Ten :) ")
-    else:
-    
-        while guess != randnum:
-            guess_count += 1
-            if guess > 10:
-                print("Number was higher than 10")
-            elif guess < 1:
-                print("Number was lower than 1")
-            if guess < randnum:
-                guess = int(input("Guess is too low! Try again:  "))
-            elif guess > randnum:
-                guess = int(input("Guess is too high! Try again:  "))
+    while True:
+        try:
+            guess = int(input("Pick a number between One and Ten. "))
+        except ValueError:
+            print("Try a WHOLE NUMBER between One and Ten.")
+        else:
         
-        if guess == randnum:
-            print(f"Winner! It only took you {guess_count} tries! ")
-            if guess_count <= high_score:
-                 high_score = guess_count
-            play_again = input("Play again?  Y/N  ")
-            if play_again.lower() == "y":
-                start_game()
+            
+            while guess != randnum:
+                guess_count += 1
+                if guess > 10:
+                    print("Number was higher than 10")
+                elif guess < 1:
+                    print("Number was lower than 1")
+                if guess < randnum:
+                    guess = int(input("Guess is too low! Try again:  "))
+                elif guess > randnum:
+                    guess = int(input("Guess is too high! Try again:  "))
+        
+            if guess == randnum:
+                print(f"Winner! It only took you {guess_count} tries! ")
+                if guess_count <= high_score:
+                    high_score = guess_count
+                play_again = input("Play again?  Y/N  ")
+                if play_again.lower() == "y":
+                    start_game()
+                else:
+                    print("Thank you for playing! ")
         
        
 start_game()
